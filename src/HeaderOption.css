@@ -18,3 +18,26 @@
     height: 25px !important;
     width: 25px !important;
 }
+.AvtarMainDiv {
+    position: relative;
+}
+.avtar {
+    position: absolute;
+    top:37px;
+    width: auto;
+    height: auto;
+    background-color: white;
+    padding:10px;
+    opacity: 0;
+    border-radius: 5px;
+}
+.avtar:hover {
+    opacity: 1;
+    /* background-color: whitesmoke; */
+}
+.spanTag {
+    color:gray;
+}
+.spanTag:hover {
+    color:black;
+}

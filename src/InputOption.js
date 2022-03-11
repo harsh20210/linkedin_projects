@@ -7,7 +7,7 @@ export default function InputOption({title , color ,Icons}) {
             <Icons style={{color:color}}/>
             <h4>{title}</h4>
         </div>
-        {/**hsashaj */}
+
     )
 }
 

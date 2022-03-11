@@ -8,9 +8,11 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import WorkIcon from '@mui/icons-material/Work';
 import MessageIcon from '@mui/icons-material/Message';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useSelector } from 'react-redux';
 
 
 export default function Header() {
+   
     return (
         <div className='header'>
 
@@ -28,8 +30,7 @@ export default function Header() {
                 <HeaderOption Icons={WorkIcon} title="Job"/>
                 <HeaderOption Icons={MessageIcon} title="Message"/>
                 <HeaderOption Icons={NotificationsIcon} title="Notification"/>
-                <HeaderOption avatr="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.biography.com%2F.image%2Ft_share%2FMTc5OTk2ODUyMTMxNzM0ODcy%2Fgettyimages-1229892983-square.jpg&imgrefurl=https%3A%2F%2Fwww.biography.com%2Fbusiness-figure%2Felon-musk&tbnid=X0aQRKeOBKhtJM&vet=12ahUKEwjais3Ey432AhUq1nMBHeRJAfsQMygBegUIARDTAQ..i&docid=h24P-DAcCzayvM&w=1200&h=1200&q=elon%20musk&ved=2ahUKEwjais3Ey432AhUq1nMBHeRJAfsQMygBegUIARDTAQ"
-                title="me"/>
+                <HeaderOption avatr="fjsfjsdfjdfjsdifjfi" title="me"/>
                 </div>
               {/*harhs*/}
         </div>

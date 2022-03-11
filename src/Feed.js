@@ -7,37 +7,20 @@ import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay";
 import Post from "./Post";
-import { db } from "./FireBase";
-import firebase from 'firebase';
+import { PostData } from "./redux/action";
+import { useDispatch , useSelector} from "react-redux";
 
 export default function Feed() {
   const [input , setInput] = useState("");
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      );
-    });
-  }, []);
+  // const [posts, setPosts] = useState([]);
+  const displatch = useDispatch();
+  const values = useSelector(state => state);
 
   const sendPost = (e) => {
     e.preventDefault();
-
-    db.collection('posts').add(
-        {
-            name:'harsh',
-            description:"this is a test",
-            message:input,
-            photoUrl:'',
-            // timestamp: firebase.firestore.FieldValue.serverTimestamp
-            //new 
-        }
-    )
+    displatch(PostData(input));
+    setInput("");
+    console.log(values);
   };
 
   return (
@@ -69,11 +52,12 @@ export default function Feed() {
         </div>
       </div>
 
+      {values.post.map(v=>{
+        return <Post name="harsh" description="text" message={v} />  
+      } )}
+
       {/*...........Post..................*/}
-      {posts.map((post) => {
-        <Post />;
-      })}
-      <Post name="harsh" description="text" message="testing" />
+      {/* <Post name="harsh" description="text" message="testing" /> */}
     </div>
   );
 }

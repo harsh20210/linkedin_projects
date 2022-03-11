@@ -1,8 +1,11 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import "./SideBar.css";
+import { useSelector } from "react-redux";
 
 export default function SideBar() {
+  const values = useSelector((state) => state);
+
   const recentItem = (topic) => {
     return (
       <div className="sidebar_recentItem">
@@ -19,9 +22,9 @@ export default function SideBar() {
           src="http://www.sdpmedia.co.uk/web/wp-content/uploads/programming-code.jpg"
           alt=""
         />
-        <Avatar className="sidebar_avatar" />
-        <h2>Harsh</h2>
-        <h4>harshkupadhyay1999@gmail.com</h4>
+        <Avatar className="sidebar_avatar" src={values.url}/>
+        <h2>{values.name}</h2>
+        <h4>{values.email}</h4>
       </div>
 
       <div className="sidebar_stats">

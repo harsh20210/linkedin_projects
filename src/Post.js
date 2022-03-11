@@ -6,14 +6,17 @@ import InputOption from './InputOption';
 import CommentIcon from '@mui/icons-material/Comment';
 import SendIcon from '@mui/icons-material/Send';
 import ShareIcon from '@mui/icons-material/Share';
+import { useSelector } from 'react-redux';
 
-export default function Post({name , description , message , photUrl }) {
+export default function Post({name , description , message  }) {
+    const values = useSelector((state)=>state);
+
     return (
         <div className="post">
             <div className="postleader">
-                <Avatar src={photUrl} />
+                <Avatar src={values.url} />
                 <div className="post_info">
-                    <h2>{name}</h2>
+                    <h2>{values.name}</h2>
                     <p>{description}</p>
                     </div>
             </div>
