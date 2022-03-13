@@ -4,6 +4,7 @@ import SideBar from "./SideBar";
 import Feed from "./Feed";
 import Login from "./Login";
 import { useSelector } from "react-redux";
+import Widget from "./Widget";
 
 function App() {
   const state = useSelector((state) => state);
@@ -14,10 +15,11 @@ function App() {
 
       <Header />
 
-      {state.name != null && state.name != ""  ? (
+      {state.name !== null && state.name !== ""  ? (
         <div className="app_body">
           <SideBar />
           <Feed />
+          <Widget/>
         </div>
       ) : (
         <Login />

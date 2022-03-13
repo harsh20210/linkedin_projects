@@ -37,3 +37,11 @@
     display: flex;
     justify-content: space-evenly;
 } 
+
+.Dialog {
+    width:500px;
+    height:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
