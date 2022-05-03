@@ -1,5 +1,6 @@
 const dataForLogin = {
     post:[{
+        id:null,
         description: null,
         imageUrl:null,
     }],
@@ -9,7 +10,6 @@ const dataForLogin = {
 }
 
 const loginAction = (state = dataForLogin  , action ) => {
-    console.log(action.payload)
    switch(action.type){
        case "LOGIN" : return {
            post:[],
@@ -27,8 +27,13 @@ const loginAction = (state = dataForLogin  , action ) => {
 
        case "POST" : return {
            ...state , 
-        //    post:[ action.payload , ...state.post  ]
-           post:state.post.concat(action.payload)
+           post:[ action.payload , ...state.post  ]
+        //    post:state.post.concat(action.payload)
+       }
+
+       case "Delete" : return {
+           ...state,
+           post:state.post.filter(v => v.id !== action.payload)
        }
        default : return state
    }

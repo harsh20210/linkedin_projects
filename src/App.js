@@ -11,10 +11,7 @@ function App() {
 
   return (
     <div className="app">
-      {console.log(typeof(state.name))}
-
       <Header />
-
       {state.name !== null && state.name !== ""  ? (
         <div className="app_body">
           <SideBar />

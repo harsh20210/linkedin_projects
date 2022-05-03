@@ -12,11 +12,17 @@ const LogOut = () => {
 }
 
 const PostData = (value) => {
-  console.log(value)
   return {
     type: "POST",
     payload:value
   }
 }
 
-export {LoginInfo , PostData ,  LogOut};
+ const deletePost = (id) => { 
+  return {
+    type:"Delete",
+    payload:id,
+  }
+ }
+
+export {LoginInfo , PostData ,  LogOut , deletePost};

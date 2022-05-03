@@ -32,3 +32,17 @@
     height:100px;
     object-fit: contain;
 }
+.MoreVertIcon {
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+}
+.MoreVertical-delete {
+    position:absolute;
+    top:100%;
+    right: 10px;
+    border:1px solid transparent;
+    white-space: nowrap;
+    padding:10px;
+    background-color: whitesmoke;   
+}

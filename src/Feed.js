@@ -7,12 +7,13 @@ import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay";
 import Post from "./Post";
-import { PostData } from "./redux/action";
+import { PostData , deletePost } from "./redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import FlipMove from "react-flip-move";
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Button from '@mui/material/Button';
+import { v4 as uuidv4 } from "uuid";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -29,6 +30,7 @@ export default function Feed() {
   const sendPost = (e) => {
     e.preventDefault();
     let data = {
+      id:uuidv4(),
       description:input ,
       imageUrl:imagePost,
     }
@@ -51,6 +53,10 @@ export default function Feed() {
       }
     }
   } 
+
+  const handleDelete = (id) => {
+    displatch(deletePost(id))
+  }
 
   return (
     <div className="feed">
@@ -94,7 +100,7 @@ export default function Feed() {
       <FlipMove>
         {values.post.map((v, index) => {
           return (
-            <Post key={index} name="harsh" description="text" message={v.description} image={v.imageUrl} />
+            <Post key={v.id} id={v.id} handleDelete={handleDelete} name="harsh" description="text" message={v.description} image={v.imageUrl} />
           );
         })} 
       </FlipMove>
