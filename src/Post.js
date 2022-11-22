@@ -9,7 +9,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import { useSelector } from "react-redux";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const Post = forwardRef(({ name, description, message, image ,id ,handleDelete }, ref) => {
+const Post = forwardRef(({ name, description, message, image ,id ,handleDelete , avatar }, ref) => {
   const [colorForLikeButton, setColorForLikeButton] = useState(false);
   const values = useSelector((state) => state);
   const [triggerForDeleteIcons , setTriggerForDeleteIcons] = useState(false);
@@ -21,9 +21,9 @@ const Post = forwardRef(({ name, description, message, image ,id ,handleDelete }
   return (
     <div ref={ref} className="post">
       <div className="postleader">
-        <Avatar src={values.url} />
+        <Avatar src={avatar} />
         <div className="post_info">
-          <h2>{values.name}</h2>
+          <h2>{name}</h2>
           <p>{description}</p>
         </div>
 
@@ -39,7 +39,7 @@ const Post = forwardRef(({ name, description, message, image ,id ,handleDelete }
         <p>{message}</p>
       </div>
 
-      <div className="imageForDisplay">{image && <img src={image} />}</div>
+      <div className="imageForDisplay">{image && <img src={image} width="100%" />}</div>
 
       <div className="post_button">
         <InputOption

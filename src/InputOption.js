@@ -12,10 +12,10 @@ export default function InputOption({ title, color, Icons, handleClick , handleI
           <h4>{title}</h4>
         </>
       ) : Icons.type.render.displayName === "ImageIcon" ? (
-        <>
-          <Icons style={{ color: color }} onClick={handleImageIconClickEvent}/>
-          <h4>{title}</h4>
-        </>
+        <div onClick={handleImageIconClickEvent} style={{display:"flex"}}>
+          <Icons style={{ color: color }} />
+          <h4 style={{marginLeft:"5px"}}>{title}</h4>
+        </div>
       ) : (
         <>
           <Icons style={{ color: color }} />

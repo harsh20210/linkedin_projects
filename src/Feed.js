@@ -14,6 +14,7 @@ import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from "uuid";
+import baseurl from './Axios';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -26,19 +27,42 @@ export default function Feed() {
   const displatch = useDispatch();
   const values = useSelector((state) => state);
 
+  console.log("State in redux ==>>>> " , values.name );
 
+  console.log(values);
   const sendPost = (e) => {
     e.preventDefault();
     let data = {
       id:uuidv4(),
       description:input ,
       imageUrl:imagePost,
+      name:values.name,
+      urlAvatar:values.url
     }
-    // displatch(PostData(input));
-    displatch(PostData(data));
-    setInput("");
-    setImagePost("");
+
+    // displatch(PostData([data]));
+    
+    baseurl.post(`/api/Post` , data)
+    .then(res => {
+      if(res.data.status === true) {
+        setInput("");
+        setImagePost("");
+        getData();
+      }
+    })
+    .catch( err => console.log(err) )  
   };
+
+  const getData = () => {
+    baseurl.get(`/getApi/Post`).then( res => {
+      displatch(PostData(res.data.data));
+      })
+      .catch( err => console.log(err));
+  }
+
+  useEffect( () => {
+    getData();
+  } ,[] )
 
   const handleImageIconButton = () => {
     setTriggerModel(!triggerModel);
@@ -55,7 +79,11 @@ export default function Feed() {
   } 
 
   const handleDelete = (id) => {
+    baseurl.get(`/api/delete/${id}`)
+    .then(res => console.log("Deleted"))
+    .catch(err => console.log("error"))
     displatch(deletePost(id))
+
   }
 
   return (
@@ -98,10 +126,12 @@ export default function Feed() {
         </div>
       </div>
       <FlipMove>
-        {values.post.map((v, index) => {
-          return (
-            <Post key={v.id} id={v.id} handleDelete={handleDelete} name="harsh" description="text" message={v.description} image={v.imageUrl} />
-          );
+        {values.post && values?.post?.map((v, index) => {
+          if(v.id !== null) {
+            return (
+              <Post key={v.id} id={v.id} handleDelete={handleDelete} name={v?.name} description="Post" message={v.description} image={v.imageUrl} avatar={v.url} />
+            );
+          }
         })} 
       </FlipMove>
 

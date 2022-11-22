@@ -1,9 +1,5 @@
 const dataForLogin = {
-    post:[{
-        id:null,
-        description: null,
-        imageUrl:null,
-    }],
+    post:[],
     name:null,
     url:null,
     email:null
@@ -26,8 +22,9 @@ const loginAction = (state = dataForLogin  , action ) => {
        }
 
        case "POST" : return {
-           ...state , 
-           post:[ action.payload , ...state.post  ]
+           ...state ,
+           post: [ ...action?.payload]
+        //    post: [ action.payload , ...state.post  ]
         //    post:state.post.concat(action.payload)
        }
 
