@@ -1,36 +1,36 @@
 import "./App.css";
-import Header from "./Header";
-import SideBar from "./SideBar";
-import Feed from "./Feed";
-import Login from "./Login";
+// import Header from "./Header";
+// import SideBar from "./SideBar";
+// import Feed from "./Feed";
+// import Login from "./Login";
 import { useSelector } from "react-redux";
-import Widget from "./Widget";
+// import Widget from "./Widget";
+import {
+  BrowserRouter,
+} from "react-router-dom";
+import RouteHandler from "./Route/RouteHandler";
 
 function App() {
   const state = useSelector((state) => state);
 
   return (
-    <div className="app">
-      <Header />
-      {state.name !== null && state.name !== ""  ? (
-        <div className="app_body">
-          <SideBar />
-          <Feed />
-          <Widget/>
-        </div>
-      ) : (
-        <Login />
-      )}
+    
+    <BrowserRouter>
+       <RouteHandler/>
+    </BrowserRouter>
 
-      {/*  <Header />                    //Previous Code   
-      <div className="app_body">
-        <SideBar />
-        <Feed />
-
-      </div>
-
-     <Login /> */}
-    </div>
+    // <div className="app">
+    //   <Header />
+    //   {state.name !== null && state.name !== ""  ? (
+    //     <div className="app_body">
+    //       <SideBar />
+    //       <Feed />
+    //       <Widget/>
+    //     </div>
+    //   ) : (
+    //     <Login />
+    //   )}
+    // </div>
   );
 }
 
