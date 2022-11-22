@@ -36,7 +36,7 @@ export default function Feed() {
       id:uuidv4(),
       description:input ,
       imageUrl:imagePost,
-      name:values.name,
+      name:localStorage.getItem("name"),
       urlAvatar:values.url
     }
 

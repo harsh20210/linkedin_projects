@@ -8,7 +8,6 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import WorkIcon from '@mui/icons-material/Work';
 import MessageIcon from '@mui/icons-material/Message';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { useSelector } from 'react-redux';
 
 
 export default function Header() {

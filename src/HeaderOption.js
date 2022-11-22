@@ -22,6 +22,7 @@ export default function HeaderOption({avatr , Icons , title}) {
           dispatch(LogOut()); 
           history("/");
           localStorage.removeItem("token");
+          localStorage.removeItem("name");
           alert(res.data.message);
         } else {
           alert(res.data.message);

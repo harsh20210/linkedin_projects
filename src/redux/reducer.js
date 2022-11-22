@@ -8,6 +8,7 @@ const dataForLogin = {
 const loginAction = (state = dataForLogin  , action ) => {
    switch(action.type){
        case "LOGIN" : return {
+           ...state,
            post:[],
            name:action.payload.name,
            url:action.payload.url,

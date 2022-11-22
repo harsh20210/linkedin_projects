@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import './Login.css';
 import link from './linkedInFull.png';
-import { useSelector , useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import {LoginInfo} from './redux/action';
 import { useNavigate } from 'react-router-dom';
 import baseurl from './Axios';
@@ -12,7 +12,7 @@ export default function Login() {
     const [dataChange , setDataChange ] = useState({});
     const [dataChangeForReg , setDataChangeForReg] = useState({}); 
     const [triggerRegistration , setTriggerRegistration] = useState(false);
-    const state = useSelector((state) => state);
+    // const state = useSelector((state) => state);
     const dispatch = useDispatch();
     const history = useNavigate();
     const [trigger , setTrigger] = useState(false);
@@ -42,6 +42,7 @@ export default function Login() {
             if(res.data.status === true) {
                 dispatch(LoginInfo(res.data.message));
                 localStorage.setItem("token" , res.data.token);
+                localStorage.setItem("name" , res.data.message.name);
                 history("/FeedPage");
                 toast.success("Welcome you have login", {
                     autoClose: 5000,
