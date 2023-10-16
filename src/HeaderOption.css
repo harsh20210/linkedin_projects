@@ -9,7 +9,7 @@
 .headerOption:hover {
     color:black;   
 }
-/*harsh*/
+
 .headerOption_title {
     font-size: 12px;
 }
@@ -23,20 +23,18 @@
 }
 .avtar {
     position: absolute;
-    top:37px;
-    width: auto;
-    height: auto;
-    background-color: white;
-    padding:10px;
-    opacity: 0;
+    top: 100%;
+    left: 100%;
+    background-color:#fff;
+    padding: 8px;
     border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 }
-.avtar:hover {
-    opacity: 1;
-    /* background-color: whitesmoke; */
-}
+
 .spanTag {
-    color:gray;
+    font-weight: 600;
 }
 .spanTag:hover {
     color:black;
